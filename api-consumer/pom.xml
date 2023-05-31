@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.uvv</groupId>
-	<artifactId>first-project</artifactId>
+	<artifactId>api-consumer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>first-project</name>
 	<description>Atividade Avaliativa Sistemas Distribuídos</description>
