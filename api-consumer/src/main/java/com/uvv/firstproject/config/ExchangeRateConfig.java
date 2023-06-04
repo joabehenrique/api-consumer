@@ -9,5 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 public class ExchangeRateConfig {
     @Value("${exchangerate.api-key}")
     private String API_KEY;
-    private final String API_URL = "https://v6.exchangerate-api.com/v6/latest/USD";
+    public String getApiUrlForCurrency(String currency) {
+        return  "https://v6.exchangerate-api.com/v6/latest/" + currency;
+    }
 }

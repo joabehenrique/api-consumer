@@ -1,2 +1,4 @@
 exchangerate:
   api-key: YOUR_API_KEY
+rapid:
+  api-key: YOUR_API_KEY

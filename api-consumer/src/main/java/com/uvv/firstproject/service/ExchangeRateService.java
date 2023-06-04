@@ -34,15 +34,16 @@ public class ExchangeRateService {
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
         ResponseEntity<String> response = restTemplate.exchange(
-                exchangeRateConfig.getAPI_URL(),
+                exchangeRateConfig.getApiUrlForCurrency("USD"),
                 HttpMethod.GET,
                 entity,
                 String.class
         );
+
         return response.getBody();
     }
 
-    public Map<String, Double>  getRatesPaged(int page, int limit){
+    public Map<String, Double>  getRatesPaged(int page, int limit, String currency){
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
 
@@ -50,7 +51,7 @@ public class ExchangeRateService {
 
         HttpEntity<String> entity = new HttpEntity<>(headers);
         ResponseEntity<RateDTO> response = restTemplate.exchange(
-                exchangeRateConfig.getAPI_URL(),
+                exchangeRateConfig.getApiUrlForCurrency(currency),
                 HttpMethod.GET,
                 entity,
                 RateDTO.class

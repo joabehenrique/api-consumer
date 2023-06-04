@@ -11,7 +11,7 @@
 	<groupId>com.uvv</groupId>
 	<artifactId>api-consumer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>first-project</name>
+	<name>api-consumer</name>
 	<description>Atividade Avaliativa Sistemas Distribuídos</description>
 	<properties>
 		<java.version>17</java.version>

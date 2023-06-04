@@ -28,7 +28,8 @@ public class ExchangeRateController {
 
     @GetMapping("/paged")
     public ResponseEntity<Map<String, Double>> getRatesPaged(@RequestParam(value = "page", defaultValue = "0") int page,
-                                                             @RequestParam(value = "limit", defaultValue = "5") int limit) {
-        return ResponseEntity.ok(exchangeRateService.getRatesPaged(page, limit));
+                                                             @RequestParam(value = "limit", defaultValue = "5") int limit,
+                                                             @RequestParam(value = "currency", defaultValue = "USD") String currency) {
+        return ResponseEntity.ok(exchangeRateService.getRatesPaged(page, limit, currency));
     }
 }
