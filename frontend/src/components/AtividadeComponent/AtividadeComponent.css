@@ -1,0 +1,46 @@
+.atividade {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    box-shadow: 7px 4px 10px 0px rgb(145, 145, 137);
+}
+
+.atividade h2{
+    color: #333;
+    font-size: 24px;
+    border-radius: 90px;
+    border: 2px solid #c0c0c0;
+    box-shadow: 7px 4px 5px 0px #42429f;
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
+
+.atividade h5{
+    padding: 20px;
+    margin: 20px;
+    margin-bottom: 20px;
+    color: #2d0b3e;
+}
+
+.atividade p {
+    color: #666;
+    font-size: 16px;
+}
+
+.atividade table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.atividade table tr {
+    border-bottom: 1px solid #000;
+    color: #000;
+}
+
+.atividade table tr td {
+    padding: 10px;
+}
