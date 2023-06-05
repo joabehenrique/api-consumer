@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { getExchangeRates } from '../../services/exchangeRateService';
 import './ExchangeRateComponent.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 const ExchangeRateComponent = () => {
   const [rates, setRates] = useState(null);
@@ -28,7 +30,16 @@ const ExchangeRateComponent = () => {
       <table>
         <thead>
           <tr>
-            <th>Câmbio {currency}</th>
+            <th>
+              <div class="divcurrency">
+                <div class="cambio">
+                  Câmbio
+                </div>
+                <div class="currency">
+                  {currency}
+                </div>
+              </div>
+            </th>
             <th>Valor</th>
           </tr>
         </thead>
@@ -43,10 +54,10 @@ const ExchangeRateComponent = () => {
       </table>
       <div class="buttons">
         <div class="button" onClick={() => setPage(prevPage => prevPage > 0 ? prevPage - 1 : prevPage)}>
-          Menos
+          <FontAwesomeIcon icon={faChevronLeft} />
         </div>
         <div class="button" onClick={() => setPage(prevPage => prevPage + 1)}>
-          Mais
+          <FontAwesomeIcon icon={faChevronRight} />
         </div>
       </div>
       <icon onClick={() => setCurrency('EUR')}>

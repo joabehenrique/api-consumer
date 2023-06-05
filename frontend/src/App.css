@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #0a1929;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,6 +22,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  margin-top: -10px;
 }
 
 .App-link {
@@ -35,4 +36,68 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+nav {
+  margin: 27px auto 0;
+  position: relative;
+  width: 390px;
+  height: 50px;
+  background-color: #34495e;
+  border-radius: 8px;
+  font-size: 0;
+}
+
+nav a {
+  line-height: 50px;
+  height: 100%;
+  font-size: 15px;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+
+nav .animation {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  z-index: 0;
+  transition: all .5s ease 0s;
+  border-radius: 8px;
+}
+a:nth-child(1) {
+  width: 100px;
+}
+a:nth-child(2) {
+  width: 180px;
+}
+a:nth-child(3) {
+  width: 100px;
+}
+nav .start-1, a:nth-child(1):hover~.animation {
+  width: 120px;
+  left: 0;
+  background-color: #1abc9c;
+}
+nav .start-2, a:nth-child(2):hover~.animation {
+  width: 120px;
+  left: 140px;
+  background-color: #e74c3c;
+}
+nav .start-3, a:nth-child(3):hover~.animation {
+  width: 120px;
+  left: 276px;
+  background-color: #3498db;
+}
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  width: 29%;
+  z-index: 100;
 }
