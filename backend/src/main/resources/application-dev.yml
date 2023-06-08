@@ -3,6 +3,8 @@ exchangerate:
 rapid:
   api-key: API_KEY
 spring:
+  main:
+    allow-circular-references: true
   datasource:
     url: jdbc:postgresql://localhost:5432/consumer
     username: postgres
@@ -14,7 +16,17 @@ spring:
       hibernate:
         format_sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
+  mvc:
+    cors:
+      allowed-origins: "*"
+      allowed-methods: "GET,POST,PUT,DELETE,OPTIONS"
   sql:
     init:
       mode: always
+jwt:
+  secret-key: API_KEY
+
+
+
+

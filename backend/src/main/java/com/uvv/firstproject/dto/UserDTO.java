@@ -15,12 +15,18 @@ import java.util.Date;
 @AllArgsConstructor
 public class UserDTO {
     private String name;
+    private String username;
+    private String password;
+    private String email;
     private Date birthdate;
     private String zodiacSign;
     private Plan plan;
 
     public UserDTO(User user) {
         this.name = user.getName();
+        this.username = user.getUsername();
+        this.password = user.getPassword();
+        this.email = user.getEmail();
         this.birthdate = user.getBirthdate();
         this.zodiacSign = user.getZodiacSign();
         this.plan = user.getPlan();

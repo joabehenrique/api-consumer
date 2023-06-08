@@ -16,7 +16,6 @@ import java.util.Map;
 public class ExchangeRateController {
     private final ExchangeRateService exchangeRateService;
 
-    @Autowired
     public ExchangeRateController(ExchangeRateService exchangeRateService) {
         this.exchangeRateService = exchangeRateService;
     }
