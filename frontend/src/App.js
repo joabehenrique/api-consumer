@@ -1,6 +1,9 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import ExchangeRateComponent from './components/ExchangeRateComponent/ExchangeRateComponent';
 import Atividade from './components/AtividadeComponent/AtividadeComponent';
+import CryptoWallet from './components/CryptoWalletComponent/CryptoWalletComponent';
+import HoroscopeComponent from './components/HoroscopeComponent/HoroscopeComponent';
+import { Login, CreateUser } from './components/AuthComponent/AuthComponent';
 import React, { useState } from 'react';
 import './App.css';
 
@@ -24,13 +27,15 @@ function App() {
               </Atividade>
             } />
             <Route path="/atividade2" element={
-              <Atividade titulo="Atividade 2" description="....">
-                {/* Conteúdo da Atividade 2 aqui... */}
+              <Atividade titulo="Atividade 2" description="Consultas Astrológicas">
+                <Login/>
+                <CreateUser/>
+                <HoroscopeComponent/>
               </Atividade>
             } />
             <Route path="/atividade3" element={
-              <Atividade titulo="Atividade 3" description="....">
-                {/* Conteúdo da Atividade 3 aqui... */}
+              <Atividade titulo="Atividade 3" description="Carteiras de Criptomoedas">
+                <CryptoWallet/>
               </Atividade>
             } />
           </Routes>

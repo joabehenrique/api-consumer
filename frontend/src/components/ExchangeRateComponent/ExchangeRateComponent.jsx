@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getExchangeRates } from '../../services/exchangeRateService';
+import { getExchangeRates } from '../../services/routesService';
 import './ExchangeRateComponent.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
@@ -13,66 +13,69 @@ const ExchangeRateComponent = () => {
   useEffect(() => {
     getExchangeRates(page, currency).then(response => {
       setRates(response.data);
-    })
-      .catch(err => {
+    }).catch(err => {
         setError(err.toString());
       });
   }, [page, currency]);
 
   if (error)
-    return <div>Erro: {error}</div>
+    return <div class="error">Erro: {error}</div>
 
   if (!rates)
-    return <div>Carregando...</div>
+    return <div class="load">Carregando...</div>
 
   return (
-    <div class="divbody">
-      <table>
-        <thead>
-          <tr>
-            <th>
-              <div class="divcurrency">
-                <div class="cambio">
-                  Câmbio
-                </div>
-                <div class="currency">
-                  {currency}
-                </div>
-              </div>
-            </th>
-            <th>Valor</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.keys(rates).map((currency) => (
-            <tr key={currency}>
-              <td>{currency}</td>
-              <td>{rates[currency].toFixed(2)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div class="buttons">
-        <div class="button" onClick={() => setPage(prevPage => prevPage > 0 ? prevPage - 1 : prevPage)}>
-          <FontAwesomeIcon icon={faChevronLeft} />
+    <table>
+      <tbody>
+        <div class="divbody">
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  <div class="divcurrency">
+                    <div class="cambio">
+                      Câmbio
+                    </div>
+                    <div class="currency">
+                      {currency}
+                    </div>
+                  </div>
+                </th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.keys(rates).map((currency) => (
+                <tr key={currency}>
+                  <td>{currency}</td>
+                  <td>{rates[currency].toFixed(2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div class="buttons">
+            <div class="button" onClick={() => setPage(prevPage => prevPage > 0 ? prevPage - 1 : prevPage)}>
+              <FontAwesomeIcon icon={faChevronLeft} />
+            </div>
+            <div class="button" onClick={() => setPage(prevPage => prevPage + 1)}>
+              <FontAwesomeIcon icon={faChevronRight} />
+            </div>
+          </div>
+          <icon onClick={() => setCurrency('EUR')}>
+            EUR
+          </icon>
+          <icon onClick={() => setCurrency('BRL')}>
+            BRL
+          </icon>
+          <icon onClick={() => setCurrency('JPY')}>
+            JPY
+          </icon>
+          <icon onClick={() => setCurrency('GBP')}>
+            GBP
+          </icon>
         </div>
-        <div class="button" onClick={() => setPage(prevPage => prevPage + 1)}>
-          <FontAwesomeIcon icon={faChevronRight} />
-        </div>
-      </div>
-      <icon onClick={() => setCurrency('EUR')}>
-        EUR
-      </icon>
-      <icon onClick={() => setCurrency('BRL')}>
-        BRL
-      </icon>
-      <icon onClick={() => setCurrency('JPY')}>
-        JPY
-      </icon>
-      <icon onClick={() => setCurrency('GBP')}>
-        GBP
-      </icon>
-    </div>
+      </tbody>
+    </table>
   );
 };
 

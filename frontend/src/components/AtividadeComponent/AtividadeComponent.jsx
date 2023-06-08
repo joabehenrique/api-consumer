@@ -5,11 +5,7 @@ const Atividade = ({ titulo, children, description }) => (
   <div className="atividade">
     <h2>{titulo}</h2>
     <h5>{description}</h5>
-    <table>
-      <tbody>
-        {children}
-      </tbody>
-    </table>
+    {children}
   </div>
 );
 

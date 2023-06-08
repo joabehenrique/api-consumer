@@ -3,7 +3,7 @@
 }
 
 icon{
-    background-color: #020272;
+    background-color: #0c0c79;
     margin: 10px;
     padding: 8px;
     border-radius: 90px;
@@ -48,9 +48,17 @@ th{
 .divcurrency{
     display: flex;
     justify-content: space-between;
-    max-width: 175px;
+    max-width: 158px;
 }
 
-.currency{
+.currency {
+    color: #1f1fd1;
+}
+
+.error{
+    color: crimson;
+}
+
+.load{
     color: #1f1fd1;
 }
