@@ -3,10 +3,7 @@ package com.uvv.firstproject.service;
 import com.uvv.firstproject.config.RapidConfig;
 import org.springframework.http.*;
 
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 @Service
@@ -17,7 +14,7 @@ public class HoroscopeService {
         this.rapidConfig = rapidConfig;
     }
 
-    public ResponseEntity<String> getHoroscope(){
+    public String getHoroscope(){
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
 
@@ -32,6 +29,6 @@ public class HoroscopeService {
                 String.class
         );
 
-        return response;
+        return response.getBody();
     }
 }

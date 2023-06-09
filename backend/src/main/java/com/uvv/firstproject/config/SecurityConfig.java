@@ -56,14 +56,17 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
         if (Arrays.asList(env.getActiveProfiles()).contains("dev")) {
             http.headers().frameOptions().disable();
         }
 
         http.authorizeRequests(authorizeRequests ->
                     authorizeRequests
-                            .antMatchers("/api/v1/auth/signin", "/api/v1/auth/signup", "/api/v1/plans").permitAll()
+                            .antMatchers("/api/v1/auth/signin",
+                                         "/api/v1/auth/signup",
+                                         "/api/v1/plans",
+                                         "/api/v1/auth/validate",
+                                         "/api/v1/rates/paged").permitAll()
                             .anyRequest().authenticated()
             )
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
@@ -77,10 +80,12 @@ public class SecurityConfig {
     }
 
     @Bean
-    CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration().applyPermitDefaultValues();
-        configuration.setAllowedMethods(Arrays.asList("POST", "GET", "PUT", "DELETE", "OPTIONS"));
-        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("*"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH"));
+        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
