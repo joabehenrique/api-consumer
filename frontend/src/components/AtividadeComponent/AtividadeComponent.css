@@ -6,6 +6,7 @@
     background-color: #f9f9f9;
     border-radius: 20px;
     box-shadow: 7px 4px 10px 0px rgb(145, 145, 137);
+    min-width: 500px;
 }
 
 .atividade h2{

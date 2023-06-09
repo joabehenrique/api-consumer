@@ -3,7 +3,7 @@ import ExchangeRateComponent from './components/ExchangeRateComponent/ExchangeRa
 import Atividade from './components/AtividadeComponent/AtividadeComponent';
 import CryptoWallet from './components/CryptoWalletComponent/CryptoWalletComponent';
 import HoroscopeComponent from './components/HoroscopeComponent/HoroscopeComponent';
-import { Login, CreateUser } from './components/AuthComponent/AuthComponent';
+import Auth from './components/AuthComponent/AuthComponent';
 import React, { useState } from 'react';
 import './App.css';
 
@@ -28,9 +28,7 @@ function App() {
             } />
             <Route path="/atividade2" element={
               <Atividade titulo="Atividade 2" description="Consultas Astrológicas">
-                <Login/>
-                <CreateUser/>
-                <HoroscopeComponent/>
+                <Auth/>
               </Atividade>
             } />
             <Route path="/atividade3" element={

@@ -1,32 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import { getDailyHoroscope } from '../../services/routesService';
+import { getDailyHoroscope } from '../../routes/AllRoutes';
+
 
 const Horoscope = ({ userSign }) => {
     const [horoscopeData, setHoroscopeData] = useState(null);
     const [error, setError] = useState(null);
-
+    
     useEffect(() => {
         getDailyHoroscope(userSign).then(response => {
             setHoroscopeData(response.data);
-            console.log(`meu console: ${response.data}`)
         }).catch(err => {
             setError(err.toString());
         });
     }, [userSign]);
 
     if (error)
-        return <p>Erro: {error}</p>
+        return <div class="error">Erro: {error}</div>
 
-    if (!horoscopeData) 
-        return <p>Carregando.T.T.</p>;
+    if (!horoscopeData)
+        return <div class="load">Carregando...</div>
     
-
     return (
         <div>
-            <h2>Horóscopo diário para {userSign}</h2>
-            <p>Mensagem do dia: {horoscopeData.dailyMessage}</p>
-            <p>Número da sorte: {horoscopeData.luckyNumber}</p>
+            <p>Mensagem do dia: {userSign} | {horoscopeData.dailyMessage}</p>
+            <p>Número da sorte: {horoscopeData.luckyNumber}</p> 
         </div>
+        
     );
 };
 

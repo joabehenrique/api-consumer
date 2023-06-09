@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getExchangeRates } from '../../services/routesService';
+import { getExchangeRates } from '../../routes/AllRoutes';
 import './ExchangeRateComponent.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
@@ -14,8 +14,8 @@ const ExchangeRateComponent = () => {
     getExchangeRates(page, currency).then(response => {
       setRates(response.data);
     }).catch(err => {
-        setError(err.toString());
-      });
+      setError(err.toString());
+    });
   }, [page, currency]);
 
   if (error)
