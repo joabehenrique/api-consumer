@@ -8,16 +8,22 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [currentActivity, setCurrentActivity] = useState(1);
+  const initialActivity = Number(localStorage.getItem("currentActivity")) || 1;
+  const [currentActivity, setCurrentActivity] = useState(initialActivity);
+
+  const handleClick = (activityNumber) => {
+    setCurrentActivity(activityNumber);
+    localStorage.setItem("currentActivity", activityNumber);
+  }
 
   return (
     <Router>
       <div className="App">
         <header className="App-header">
           <nav className="nav-bar">
-            <Link  to="/atividade1" onClick={() => setCurrentActivity(1)}>Atividade 1</Link >
-            <Link  to="/atividade2" onClick={() => setCurrentActivity(2)}>Atividade 2</Link >
-            <Link  to="/atividade3" onClick={() => setCurrentActivity(3)}>Atividade 3</Link >
+            <Link  to="/atividade1" onClick={() => handleClick(1)}>Atividade 1</Link >
+            <Link  to="/atividade2" onClick={() => handleClick(2)}>Atividade 2</Link >
+            <Link  to="/atividade3" onClick={() => handleClick(3)}>Atividade 3</Link >
             <div className={`animation start-${currentActivity}`}></div>
           </nav>
           <Routes>

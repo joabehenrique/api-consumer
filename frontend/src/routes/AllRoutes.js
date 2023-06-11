@@ -7,8 +7,24 @@ export const getExchangeRates = (page, currency = 'USD') => {
     return axios.get(`${HOST}/api/v1/rates/paged?page=${page}&currency=${currency}`);
 }
 
-export const getDailyHoroscope = () => {
-    return axios.get(`${HOST}/api/v1/horoscope`, {
+export const getDailyPhrase = () => {
+    return axios.get(`${HOST}/api/v1/horoscope/dailyphrase`, {
+        headers: {
+            'Authorization': `${getToken()}`
+        }
+    });
+}
+
+export const getNumerolog = (numero) => {
+    return axios.get(`${HOST}/api/v1/horoscope/numerolog?n=${numero}`, {
+        headers: {
+            'Authorization': `${getToken()}`
+        }
+    });
+}
+
+export const getSign = (sign) => {
+    return axios.get(`${HOST}/api/v1/horoscope/sign?s=${sign}`, {
         headers: {
             'Authorization': `${getToken()}`
         }
@@ -17,6 +33,14 @@ export const getDailyHoroscope = () => {
 
 export const getPlans = () => {
     return axios.get(`${HOST}/api/v1/plans`);
+}
+
+export const getUserDetails = (username, token) => {
+    return axios.get(`${HOST}/api/v1/users?username=${username}`, {
+        headers: {
+            'Authorization': `${token}`
+        }
+    });
 }
 
 export const authSignup = (user) => {

@@ -33,7 +33,6 @@ const Auth = () => {
         if (value === justifyActive) {
             return;
         }
-
         setJustifyActive(value);
     };
 
@@ -42,6 +41,7 @@ const Auth = () => {
             const response = await signin(username, password);
             console.log('Login bem-sucedido:', response.data);
             setIsLoggedIn(true);
+            window.localStorage.setItem('username', username);
         } catch (error) {
             console.error('Erro ao fazer login:', error);
         }
@@ -116,19 +116,18 @@ const Auth = () => {
                     <div className='nac'>
                         <p className="text-center">Not a member?
                             <MDBTabsLink className="" onClick={() => handleJustifyClick('tab2')} active={justifyActive === 'tab2'}>
-                                <a href="">Register</a>
+                                <a href="#">Register</a>
                             </MDBTabsLink>
                         </p>
                     </div>
-
                 </MDBTabsPane>
                 <MDBTabsPane show={justifyActive === 'tab2'}>
-                    <div className="text-center mb-3">
+                    <div className="text-center mb-1">
                         <p>Sign up with:</p>
                     </div>
 
                     <MDBInput
-                        wrapperClass='mb-4 label'
+                        wrapperClass='mb-3 label'
                         label='Name'
                         id='form1'
                         type='text'
@@ -136,7 +135,7 @@ const Auth = () => {
                         onChange={e => setName(e.target.value)}
                     />
                     <MDBInput
-                        wrapperClass='mb-4 label'
+                        wrapperClass='mb-3 label'
                         label='Username'
                         id='form1'
                         type='text'
@@ -144,7 +143,7 @@ const Auth = () => {
                         onChange={e => setUsername(e.target.value)}
                     />
                     <MDBInput
-                        wrapperClass='mb-4 label'
+                        wrapperClass='mb-3 label'
                         label='Email'
                         id='form1'
                         type='email'
@@ -152,7 +151,7 @@ const Auth = () => {
                         onChange={e => setEmail(e.target.value)}
                     />
                     <MDBInput
-                        wrapperClass='mb-4 label'
+                        wrapperClass='mb-3 label'
                         label='Password'
                         id='form1'
                         type='password'
@@ -160,7 +159,7 @@ const Auth = () => {
                         onChange={e => setPassword(e.target.value)}
                     />
                     <MDBInput
-                        wrapperClass='mb-4 label'
+                        wrapperClass='mb-3 label'
                         label='Birthdate'
                         id='form1'
                         type='birthdate'
@@ -168,7 +167,7 @@ const Auth = () => {
                         onChange={e => setBirthdate(e.target.value)}
                     />
                     <MDBInput
-                        wrapperClass='mb-4 label'
+                        wrapperClass='mb-3 label'
                         label='ZodiacSign'
                         id='form1'
                         type='zodiacSign'
@@ -176,7 +175,7 @@ const Auth = () => {
                         onChange={e => setZodiacSign(e.target.value)}
                     />
                     <select
-                        className="form-select mb-4"
+                        className="form-select mb-3"
                         value={plan}
                         onChange={e => setPlan(Number(e.target.value))}
                     >
@@ -184,7 +183,7 @@ const Auth = () => {
                             <option key={currentPlan.id} value={currentPlan.id}>{currentPlan.name}</option>
                         ))}
                     </select>
-                    <MDBBtn className="mb-4 w-100" onClick={handleSignup}>Sign up</MDBBtn>
+                    <MDBBtn className="mb-3 w-100" onClick={handleSignup}>Sign up</MDBBtn>
                 </MDBTabsPane>
             </MDBTabsContent>
         </MDBContainer>

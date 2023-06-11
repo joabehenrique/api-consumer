@@ -11,3 +11,7 @@ export const signin = async (username, password) => {
         throw error;
     }
 }
+
+export const getUsername = () => {
+   return window.localStorage.getItem('username');
+}

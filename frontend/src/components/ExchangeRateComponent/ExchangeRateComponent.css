@@ -34,7 +34,7 @@ th{
     border: none;
     border-radius:10px;
     box-shadow: 3px 4px 5px 0px #42429f;
-    padding-bottom: 5px;
+    padding-bottom: 40px;
     padding-top: 0px;
     width: 80px;
     height: 40px;
@@ -48,7 +48,7 @@ th{
 .divcurrency{
     display: flex;
     justify-content: space-between;
-    max-width: 168px;
+    max-width: 170px;
 }
 
 .currency {
