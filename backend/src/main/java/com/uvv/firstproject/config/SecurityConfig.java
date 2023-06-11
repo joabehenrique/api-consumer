@@ -66,7 +66,9 @@ public class SecurityConfig {
                                          "/api/v1/auth/signup",
                                          "/api/v1/plans",
                                          "/api/v1/auth/validate",
-                                         "/api/v1/rates/paged").permitAll()
+                                         "/api/v1/rates/paged",
+                                         "/api/v1/wallets",
+                                         "/api/v1/wallets/{id}").permitAll()
                             .anyRequest().authenticated()
             )
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

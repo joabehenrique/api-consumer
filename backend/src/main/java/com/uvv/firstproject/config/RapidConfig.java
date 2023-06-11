@@ -9,5 +9,8 @@ import org.springframework.context.annotation.Configuration;
 public class RapidConfig {
     @Value("${rapid.api-key}")
     private String API_KEY;
-    private final String API_URL = "https://horoscope-astrology.p.rapidapi.com/dailyphrase";
+    private final String API_URL = "https://horoscope-astrology.p.rapidapi.com/";
+    public String getApisHoroscope(String endpointName) {
+        return  API_URL + endpointName;
+    }
 }

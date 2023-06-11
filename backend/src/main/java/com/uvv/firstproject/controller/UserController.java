@@ -17,9 +17,13 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<UserDTO>> getUsers(Pageable pageRequest) {
-        Page<UserDTO> list = userService.findAllPaged(pageRequest);
-
+    public ResponseEntity<Page<UserDTO>> getUsers(@RequestParam(required = false) String username,Pageable pageRequest) {
+        Page<UserDTO> list;
+        if(username != null && !username.isEmpty()) {
+            list = userService.findByUsername(username, pageRequest);
+        } else {
+            list = userService.findAllPaged(pageRequest);
+        }
         return ResponseEntity.ok().body(list);
     }
 
@@ -29,20 +33,3 @@ public class UserController {
     }
 
 }
-
-//
-//    @PutMapping("/{id}")
-//    public User updateUser(@PathVariable Long id, @RequestBody User user) {
-//        User existingUser = userService.findById(id)
-//                .orElseThrow(() -> new ResourceNotFoundException("User not found with id " + id));
-//        BeanUtils.copyProperties(user, existingUser, "id");
-//        return userService.save(existingUser);
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public void deleteUser(@PathVariable Long id) {
-//        if (!userRepository.existsById(id)) {
-//            throw new ResourceNotFoundException("User not found with id " + id);
-//        }
-//        userService.deleteById(id);
-//    }

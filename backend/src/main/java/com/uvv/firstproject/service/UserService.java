@@ -63,6 +63,11 @@ public class UserService implements UserDetailsService {
         return new UserDTO(user);
     }
 
+    public Page<UserDTO> findByUsername(String username, Pageable pageable) {
+        Page<User> users = userRepository.findByUsername(username, pageable);
+        return users.map(user -> new UserDTO(user));
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
